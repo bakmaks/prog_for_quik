@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Store>
+  <!-- Папка для хранения файлов истории. -->
+  <file_path value="C:\\SBERBANK\QUIK\\All_Trade"/>
+  
+  <!-- Суффикс заменяется один раз при смене контракта. -->
+  <ticker_suffix value="M9"/>
+  
+<!--
+graph_id			-- Идентификатор графика на который выставляются метки экстримальных объёмов.
+MIN_SIZE_TRADE		-- Минимальное кол-во контрактов в сделке.
+CONTRACTS_IN_TRADE 	-- В кластере должна присутствовать хотя бы одна сделка с таким кол. контрактов. 
+MIN_SIZE_CLUSTER	-- Минимальное колво сделок в кластере.
+MIDDLE_SIZE_TRADES
+BIG_SIZE_TRADES
+CLUSTER_TIME    	-- Длина кластера в sec.
+DAYS_BEFORE     	-- Сколько дней истории просматривать.
+vol_show_hist		-- Начиная с какого объёма, показывать метки на истории.
+vol_show_now		-- Начиная с какого объёма, показывать метки для текущего дня.
+label_length			-- Коэффициент для регулировки длины линии на графике.
+-->
+  
+ <!-- <SR class="SPBFUT">
+    <graph_id value="SR_"/>
+    <MIN_SIZE_TRADE value="1"/>
+    <CONTRACTS_IN_TRADE value="300"/>
+    <MIN_SIZE_CLUSTER value="4000"/>
+    <MIDDLE_SIZE_TRADES value="5000"/>
+    <BIG_SIZE_TRADES value="7500"/>
+    <CLUSTER_TIME value="5"/>
+	<label_length value="0.3"/>
+	<price_shift value="2"/>
+  </SR>   -->
+
+   <SR class="SPBFUT">
+    <graph_id value="SR_"/>
+    <MIN_SIZE_TRADE value="1"/>
+    <CONTRACTS_IN_TRADE value="50"/>
+    <MIN_SIZE_CLUSTER value="600"/>
+    <MIDDLE_SIZE_TRADES value="1000"/>
+    <BIG_SIZE_TRADES value="3000"/>
+    <CLUSTER_TIME value="0.1"/>
+	<label_length value="0.3"/>
+	<price_shift value="2"/>
+  </SR>  
+  
+  <GZ class="SPBFUT">
+    <graph_id value="GZ_"/>
+    <MIN_SIZE_TRADE value="50"/>
+    <CONTRACTS_IN_TRADE value="100"/>
+    <MIN_SIZE_CLUSTER value="100"/>
+    <MIDDLE_SIZE_TRADES value="300"/>
+    <BIG_SIZE_TRADES value="500"/>
+    <CLUSTER_TIME value="0.1"/>
+    <DAYS_BEFORE value="20"/>
+	<vol_show_hist value="100"/>
+	<vol_show_now value="100"/>
+	<label_length value="0.5"/>
+	<price_shift value="0"/>
+  </GZ>
+  
+   <RI class="SPBFUT">
+    <graph_id value="RI_"/>
+    <MIN_SIZE_TRADE value="1"/>
+    <CONTRACTS_IN_TRADE value="50"/>
+    <MIN_SIZE_CLUSTER value="1500"/>
+    <MIDDLE_SIZE_TRADES value="3000"/>
+    <BIG_SIZE_TRADES value="5000"/>
+    <CLUSTER_TIME value="10"/>
+	<label_length value="0.8"/>
+	<price_shift value="30"/>
+  </RI>
+   
+ <!--  <RI class="SPBFUT">
+    <graph_id value="RI_"/>
+    <MIN_SIZE_TRADE value="50"/>
+    <CONTRACTS_IN_TRADE value="100"/>
+    <MIN_SIZE_CLUSTER value="200"/>
+    <MIDDLE_SIZE_TRADES value="500"/>
+    <BIG_SIZE_TRADES value="1000"/>
+    <CLUSTER_TIME value="0.1"/>
+	<label_length value="0.2"/>
+	<price_shift value="20"/>
+  </RI> -->
+  
+  <Si class="SPBFUT">
+    <graph_id value="Si_"/>
+    <MIN_SIZE_TRADE value="1"/>
+    <CONTRACTS_IN_TRADE value="800"/>
+    <MIN_SIZE_CLUSTER value="13000"/>
+    <MIDDLE_SIZE_TRADES value="15000"/>
+    <BIG_SIZE_TRADES value="17000"/>
+    <CLUSTER_TIME value="5"/>
+	<label_length value="2.2"/>
+	<price_shift value="20"/>
+  </RI>
+ 
+   <VB class="SPBFUT">
+    <graph_id value="VB_"/>
+    <MIN_SIZE_TRADE value="1"/>
+    <CONTRACTS_IN_TRADE value="100"/>
+    <MIN_SIZE_CLUSTER value="700"/>
+    <MIDDLE_SIZE_TRADES value="1000"/>
+    <BIG_SIZE_TRADES value="2000"/>
+    <CLUSTER_TIME value="10"/>
+	<label_length value="0.5"/>
+	<price_shift value="0"/>
+  </VB>
+</Store>
