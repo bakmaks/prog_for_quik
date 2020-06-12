@@ -1,4 +1,4 @@
-package.cpath=".\\?.dll;.\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\loadall.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\loadall.dll;C:\\Program Files\\Lua\\5.1\\?.dll;C:\\Program Files\\Lua\\5.1\\?51.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files\\Lua\\5.1\\loadall.dll;C:\\Program Files\\Lua\\5.1\\clibs\\loadall.dll"..package.cpath
+п»їpackage.cpath=".\\?.dll;.\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\loadall.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\loadall.dll;C:\\Program Files\\Lua\\5.1\\?.dll;C:\\Program Files\\Lua\\5.1\\?51.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files\\Lua\\5.1\\loadall.dll;C:\\Program Files\\Lua\\5.1\\clibs\\loadall.dll"..package.cpath
 package.path=package.path..";.\\?.lua;C:\\Program Files (x86)\\Lua\\5.1\\lua\\?.lua;C:\\Program Files (x86)\\Lua\\5.1\\lua\\?\\init.lua;C:\\Program Files (x86)\\Lua\\5.1\\?.lua;C:\\Program Files (x86)\\Lua\\5.1\\?\\init.lua;C:\\Program Files (x86)\\Lua\\5.1\\lua\\?.luac;C:\\Program Files\\Lua\\5.1\\lua\\?.lua;C:\\Program Files\\Lua\\5.1\\lua\\?\\init.lua;C:\\Program Files\\Lua\\5.1\\?.lua;C:\\Program Files\\Lua\\5.1\\?\\init.lua;C:\\Program Files\\Lua\\5.1\\lua\\?.luac;"
 
 package.path=package.path..getScriptPath()..'\\?.lua;'
@@ -7,21 +7,21 @@ require 'QL'
 require 'nowClusterTools'
 require 'nowClusterShow'
 
-Cluster = {} -- хранилище всех свойств кластера и самого кластера
-Label_params = {} --хранилище параметров меток
+Cluster = {} -- С…СЂР°РЅРёР»РёС‰Рµ РІСЃРµС… СЃРІРѕР№СЃС‚РІ РєР»Р°СЃС‚РµСЂР° Рё СЃР°РјРѕРіРѕ РєР»Р°СЃС‚РµСЂР°
+Label_params = {} --С…СЂР°РЅРёР»РёС‰Рµ РїР°СЂР°РјРµС‚СЂРѕРІ РјРµС‚РѕРє
 
 local run = true
 
 local message = function (str) message(str, 1) end
 
---############################# Функции обратного вызова ########################################
+--############################# Р¤СѓРЅРєС†РёРё РѕР±СЂР°С‚РЅРѕРіРѕ РІС‹Р·РѕРІР° ########################################
 function OnInit()
-	Cluster = initClusterStore('GZM6') -- ВВЕСТИ НАЗВАНИЕ ФЬЮЧЕРСА !!!!!!
+	Cluster = initClusterStore('GZM6') -- Р’Р’Р•РЎРўР РќРђР—Р’РђРќРР• Р¤Р¬Р®Р§Р•Р РЎРђ !!!!!!
 	Label_params = initLabelParams()
 end
 
 function OnStop(s)
-	-- message('стоп!')
+	-- message('СЃС‚РѕРї!')
 	removeAllClusterLabels(Cluster.ticker_items['graph_id'], Cluster.labels)
 	run = false
 	return 
@@ -30,11 +30,11 @@ end
 --###############################################################################################
 
 function main()
-	local is_cluster = false 	-- нет кластера
-	local start = 0				-- строка с которой продолжится перебор таблицы всех сделок
-	local cl_average_pr = 0 	-- средняя цена кластера
+	local is_cluster = false 	-- РЅРµС‚ РєР»Р°СЃС‚РµСЂР°
+	local start = 0				-- СЃС‚СЂРѕРєР° СЃ РєРѕС‚РѕСЂРѕР№ РїСЂРѕРґРѕР»Р¶РёС‚СЃСЏ РїРµСЂРµР±РѕСЂ С‚Р°Р±Р»РёС†С‹ РІСЃРµС… СЃРґРµР»РѕРє
+	local cl_average_pr = 0 	-- СЃСЂРµРґРЅСЏСЏ С†РµРЅР° РєР»Р°СЃС‚РµСЂР°
 	
-	local t_time, t_date = '', ''		-- строковые значения даты и времени
+	local t_time, t_date = '', ''		-- СЃС‚СЂРѕРєРѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РґР°С‚С‹ Рё РІСЂРµРјРµРЅРё
 	local suffix, hint = '', ''
 	local l = 1
 	while run do
@@ -43,8 +43,8 @@ function main()
 			setLableColor(255, 245, 0)
 			cl_average_pr = getClusterAveragePrice()
 			t_time, t_date = getTimeDateString(getClusterDateTime())
-			hint = 'Дата: '..t_date..'; Время: '..t_time..';\nЦена: '..math.floor(cl_average_pr)..
-							'; Объём: '..Cluster.sum_contr..';\nМакс. сделка: '..maxTrade(Cluster.cluster)
+			hint = 'Р”Р°С‚Р°: '..t_date..'; Р’СЂРµРјСЏ: '..t_time..';\nР¦РµРЅР°: '..math.floor(cl_average_pr)..
+							'; РћР±СЉС‘Рј: '..Cluster.sum_contr..';\nРњР°РєСЃ. СЃРґРµР»РєР°: '..maxTrade(Cluster.cluster)
 			if Cluster.sum_contr < Cluster.ticker_items['MIDDLE_SIZE_TRADES'] then
 				suffix = 's'			--'small_volume'
 			elseif Cluster.sum_contr < Cluster.ticker_items['BIG_SIZE_TRADES'] then
@@ -61,7 +61,7 @@ function main()
 				end
 			end
 			if Cluster.ticker_items['label_length'] <= 0 then 
-				message('Задайте величину "label_length" > 0 в файле config.xml')
+				message('Р—Р°РґР°Р№С‚Рµ РІРµР»РёС‡РёРЅСѓ "label_length" > 0 РІ С„Р°Р№Р»Рµ config.xml')
 				OnStop()
 			end
 			Label_params.TEXT = suffix..getLine(math.floor((Cluster.sum_contr / (Cluster.ticker_items['label_length'] * 1000)) ^ 1.5))			
