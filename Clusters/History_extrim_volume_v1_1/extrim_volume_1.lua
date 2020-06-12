@@ -1,4 +1,4 @@
-package.cpath=".\\?.dll;.\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\loadall.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\loadall.dll;C:\\Program Files\\Lua\\5.1\\?.dll;C:\\Program Files\\Lua\\5.1\\?51.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files\\Lua\\5.1\\loadall.dll;C:\\Program Files\\Lua\\5.1\\clibs\\loadall.dll"..package.cpath
+п»їpackage.cpath=".\\?.dll;.\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\loadall.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\loadall.dll;C:\\Program Files\\Lua\\5.1\\?.dll;C:\\Program Files\\Lua\\5.1\\?51.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files\\Lua\\5.1\\loadall.dll;C:\\Program Files\\Lua\\5.1\\clibs\\loadall.dll"..package.cpath
 package.path=package.path..";.\\?.lua;C:\\Program Files (x86)\\Lua\\5.1\\lua\\?.lua;C:\\Program Files (x86)\\Lua\\5.1\\lua\\?\\init.lua;C:\\Program Files (x86)\\Lua\\5.1\\?.lua;C:\\Program Files (x86)\\Lua\\5.1\\?\\init.lua;C:\\Program Files (x86)\\Lua\\5.1\\lua\\?.luac;C:\\Program Files\\Lua\\5.1\\lua\\?.lua;C:\\Program Files\\Lua\\5.1\\lua\\?\\init.lua;C:\\Program Files\\Lua\\5.1\\?.lua;C:\\Program Files\\Lua\\5.1\\?\\init.lua;C:\\Program Files\\Lua\\5.1\\lua\\?.luac;"
 
 package.path=package.path..getScriptPath()..'\\?.lua;'
@@ -31,8 +31,8 @@ function readFile(name)
 end
 
 function getMsFromStringTime(time_string)
---Получает строку со временем в формате 'HH:MM:SS'
---Возвращает время сделки в ms в виде числа.
+--РџРѕР»СѓС‡Р°РµС‚ СЃС‚СЂРѕРєСѓ СЃРѕ РІСЂРµРјРµРЅРµРј РІ С„РѕСЂРјР°С‚Рµ 'HH:MM:SS'
+--Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЂРµРјСЏ СЃРґРµР»РєРё РІ ms РІ РІРёРґРµ С‡РёСЃР»Р°.
 --
 	local elements = split(time_string, ':')
 	local ms_time = (elements[1] * 3600 + elements[2] * 60 + elements[3]) * 1000
@@ -40,8 +40,8 @@ function getMsFromStringTime(time_string)
 end
 
 function getClusterTime(t)
---Получает время в ms виде числа
---Возвращает время в виде числа 'ЧЧММСС'
+--РџРѕР»СѓС‡Р°РµС‚ РІСЂРµРјСЏ РІ ms РІРёРґРµ С‡РёСЃР»Р°
+--Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЂРµРјСЏ РІ РІРёРґРµ С‡РёСЃР»Р° 'Р§Р§РњРњРЎРЎ'
 	local hour = math.floor(t / 3600000)
 	local min = math.floor((t/1000/60) % 60)
 	local sec = t / 1000 % 60
@@ -51,16 +51,16 @@ end
 function getInitParameters(ticker)
 	local result_tbl = {
 			ticker_store = getTickerPattern(ticker),
-			height_of_table = 0,		-- Начальная высота таблицы.
-			cluster_labels = {},		-- Здесь хранятся идентификаторы меток.
+			height_of_table = 0,		-- РќР°С‡Р°Р»СЊРЅР°СЏ РІС‹СЃРѕС‚Р° С‚Р°Р±Р»РёС†С‹.
+			cluster_labels = {},		-- Р—РґРµСЃСЊ С…СЂР°РЅСЏС‚СЃСЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РјРµС‚РѕРє.
 			clusters = {},
-			deal_table = {},			-- Таблица сделок {{time_ms, qty, price, operation, looked}}
+			deal_table = {},			-- РўР°Р±Р»РёС†Р° СЃРґРµР»РѕРє {{time_ms, qty, price, operation, looked}}
 			NOW_DATE = date(),
 			sec_code = '',
 			class_code = '',
-			cl_date = 0,					-- число вида 'YYYYMMDD'
-			file = {},					-- список  файлов	
-			label = {					-- структура параметров метки
+			cl_date = 0,					-- С‡РёСЃР»Рѕ РІРёРґР° 'YYYYMMDD'
+			file = {},					-- СЃРїРёСЃРѕРє  С„Р°Р№Р»РѕРІ	
+			label = {					-- СЃС‚СЂСѓРєС‚СѓСЂР° РїР°СЂР°РјРµС‚СЂРѕРІ РјРµС‚РєРё
 				IMAGE_PATH = nil,		--label_name
 				ALIGNMENT = 'RIGHT',
 				TRANSPARENCY = 0,
@@ -73,7 +73,7 @@ function getInitParameters(ticker)
 end
 
 function clearParams(params)
--- очищает парамтры 'deal_table'
+-- РѕС‡РёС‰Р°РµС‚ РїР°СЂР°РјС‚СЂС‹ 'deal_table'
 	params.deal_table = {}
 end
 
@@ -83,12 +83,12 @@ function getEndTime(start_cluster_time, params)
 end
 
 function setTradesTable(file_name, trade_date, params)
--- функция получает имя открываемого файла, дату сделок в файле и таблицу параметров
--- поле 'deal_table' содержит таблицы с полями данных сделкок,
--- поле 'flags'  содержит символ операции 'B', 'S',
--- поле 'looked' определяет просмотрена сделка или нет.
--- поле 'qty_table' ключ - это кол-во контрактов в сделке, а значение  это таблица с номерами
--- строк в таблице 'deal_table' в которых эти сделки находятся
+-- С„СѓРЅРєС†РёСЏ РїРѕР»СѓС‡Р°РµС‚ РёРјСЏ РѕС‚РєСЂС‹РІР°РµРјРѕРіРѕ С„Р°Р№Р»Р°, РґР°С‚Сѓ СЃРґРµР»РѕРє РІ С„Р°Р№Р»Рµ Рё С‚Р°Р±Р»РёС†Сѓ РїР°СЂР°РјРµС‚СЂРѕРІ
+-- РїРѕР»Рµ 'deal_table' СЃРѕРґРµСЂР¶РёС‚ С‚Р°Р±Р»РёС†С‹ СЃ РїРѕР»СЏРјРё РґР°РЅРЅС‹С… СЃРґРµР»РєРѕРє,
+-- РїРѕР»Рµ 'flags'  СЃРѕРґРµСЂР¶РёС‚ СЃРёРјРІРѕР» РѕРїРµСЂР°С†РёРё 'B', 'S',
+-- РїРѕР»Рµ 'looked' РѕРїСЂРµРґРµР»СЏРµС‚ РїСЂРѕСЃРјРѕС‚СЂРµРЅР° СЃРґРµР»РєР° РёР»Рё РЅРµС‚.
+-- РїРѕР»Рµ 'qty_table' РєР»СЋС‡ - СЌС‚Рѕ РєРѕР»-РІРѕ РєРѕРЅС‚СЂР°РєС‚РѕРІ РІ СЃРґРµР»РєРµ, Р° Р·РЅР°С‡РµРЅРёРµ  СЌС‚Рѕ С‚Р°Р±Р»РёС†Р° СЃ РЅРѕРјРµСЂР°РјРё
+-- СЃС‚СЂРѕРє РІ С‚Р°Р±Р»РёС†Рµ 'deal_table' РІ РєРѕС‚РѕСЂС‹С… СЌС‚Рё СЃРґРµР»РєРё РЅР°С…РѕРґСЏС‚СЃСЏ
 	
     local tbl = readFile(file_name)
 	local a = #params.file + 1
@@ -128,8 +128,8 @@ end
 
 
 function searchClusters(params)
-	local qty = params.ticker_store['CONTRACTS_IN_TRADE']	--кол-во контр с которого начинает отсчёт кластера
-	local min_qty = params.ticker_store['MIN_SIZE_TRADE']	--минимальное кол-во контрактов которое учитывается
+	local qty = params.ticker_store['CONTRACTS_IN_TRADE']	--РєРѕР»-РІРѕ РєРѕРЅС‚СЂ СЃ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С‡РёРЅР°РµС‚ РѕС‚СЃС‡С‘С‚ РєР»Р°СЃС‚РµСЂР°
+	local min_qty = params.ticker_store['MIN_SIZE_TRADE']	--РјРёРЅРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ РєРѕРЅС‚СЂР°РєС‚РѕРІ РєРѕС‚РѕСЂРѕРµ СѓС‡РёС‚С‹РІР°РµС‚СЃСЏ
 	local end_t = 0
 	local sum, price = 0, 0
 	local max_qty, time_of_max = 0, 0

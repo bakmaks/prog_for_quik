@@ -1,10 +1,10 @@
-function showListOfFiles(params, id_table, num)
+п»їfunction showListOfFiles(params, id_table, num)
 	local rows, col = GetTableSize (id_table)
-	local fnd = 'да'
+	local fnd = 'РґР°'
 	if num > rows then InsertRow(id_table, -1) end
 	SetCell(id_table, num, 1, params.file[num].name)
 	if params.file[num].not_found then 
-		fnd = 'нет' 
+		fnd = 'РЅРµС‚' 
 		SetColor(id_table, num, QTABLE_NO_INDEX, RGB(255, 211, 0), QTABLE_DEFAULT_COLOR, RGB(255, 211, 0), QTABLE_DEFAULT_COLOR)
 	end
 	SetCell(id_table, num, 2, fnd)
@@ -26,16 +26,16 @@ function addLableOnGr(params, cl_date)
 	local cl_date = tonumber(cl_date)
 	
 	if params.ticker_store['label_length'] <= 0 then 
-		message('Задайте величину "label_length" > 0 в файле config.xml')
+		message('Р—Р°РґР°Р№С‚Рµ РІРµР»РёС‡РёРЅСѓ "label_length" > 0 РІ С„Р°Р№Р»Рµ config.xml')
 		return 
 	end
 	--message('date = '..cl_date,1)
 	for cl_position = 1, #params.clusters[cl_date] do
 		setLableColor(255, 245, 0, params)
-		hint = 'Дата: '..cl_date..'; Время: '..params.clusters[cl_date][cl_position].cl_time..
-				';\nЦена: '..math.floor(params.clusters[cl_date][cl_position].cl_avg_price)..
-				'; Объём: '..params.clusters[cl_date][cl_position].cl_sum_qty..
-				';\nМакс. сделка: '..params.clusters[cl_date][cl_position].cl_max_qty
+		hint = 'Р”Р°С‚Р°: '..cl_date..'; Р’СЂРµРјСЏ: '..params.clusters[cl_date][cl_position].cl_time..
+				';\nР¦РµРЅР°: '..math.floor(params.clusters[cl_date][cl_position].cl_avg_price)..
+				'; РћР±СЉС‘Рј: '..params.clusters[cl_date][cl_position].cl_sum_qty..
+				';\nРњР°РєСЃ. СЃРґРµР»РєР°: '..params.clusters[cl_date][cl_position].cl_max_qty
 		if params.clusters[cl_date][cl_position].cl_sum_qty < params.ticker_store['MIDDLE_SIZE_TRADES'] then
 			suffix = 's'			--'small_volume'
 		elseif params.clusters[cl_date][cl_position].cl_sum_qty < params.ticker_store['BIG_SIZE_TRADES'] then

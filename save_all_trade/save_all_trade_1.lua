@@ -1,4 +1,4 @@
-if string.find(package.path,'C:\\Program Files (x86)\\Lua\\5.1\\?.lua')==nil then
+п»їif string.find(package.path,'C:\\Program Files (x86)\\Lua\\5.1\\?.lua')==nil then
    package.path=package.path..';C:\\Program Files (x86)\\Lua\\5.1\\?.lua;'
 end
 if string.find(package.path,'C:\\Program Files\\Lua\\5.1\\?.lua;C:\\Program Files\\Lua\\5.1\\Lua\\?.lua;')==nil then
@@ -14,7 +14,7 @@ local suffix = 'M9'
 
 local tickers = {}
 local sClassCode = 'SPBFUT'     --getParam(sSecCode)       --'SPBFUT'
-local sPath = 'C:\\SBERBANK\\QUIK\\All_Trade' -- указать путь к папке, куда сохран¤ть архив всех сделок
+local sPath = 'C:\\SBERBANK\\QUIK\\All_Trade' -- СѓРєР°Р·Р°С‚СЊ РїСѓС‚СЊ Рє РїР°РїРєРµ, РєСѓРґР° СЃРѕС…СЂР°РЅВ¤С‚СЊ Р°СЂС…РёРІ РІСЃРµС… СЃРґРµР»РѕРє
 
 local write = write
 local string_format = string.format
@@ -24,7 +24,7 @@ local nLastNumTrade = 0
 local is_run = true
 local call = false
 
---********************************************* ‘ункции обработчики событий Quik *************************************
+--********************************************* вЂСѓРЅРєС†РёРё РѕР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№ Quik *************************************
 function OnStop()
 	is_run = false
 	DestroyTable(SaveAllTrades)
@@ -32,11 +32,11 @@ end
 
 function OnInit()
 	SaveAllTrades = AllocTable()
-	AddColumn(SaveAllTrades, 1, "Имя файла", true, QTABLE_CACHED_STRING_TYPE, 40)
-	AddColumn(SaveAllTrades, 2, "Время записи записи", true, QTABLE_CACHED_STRING_TYPE, 20)
+	AddColumn(SaveAllTrades, 1, "РРјСЏ С„Р°Р№Р»Р°", true, QTABLE_CACHED_STRING_TYPE, 40)
+	AddColumn(SaveAllTrades, 2, "Р’СЂРµРјСЏ Р·Р°РїРёСЃРё Р·Р°РїРёСЃРё", true, QTABLE_CACHED_STRING_TYPE, 20)
 	CreateWindow(SaveAllTrades)
 	
-	SetTableNotificationCallback(SaveAllTrades, tableManagement)		-- назначение функции обратного вызова
+	SetTableNotificationCallback(SaveAllTrades, tableManagement)		-- РЅР°Р·РЅР°С‡РµРЅРёРµ С„СѓРЅРєС†РёРё РѕР±СЂР°С‚РЅРѕРіРѕ РІС‹Р·РѕРІР°
 	
 	SetWindowPos(SaveAllTrades, 100, 700, 400, 100)
 	InsertRow(SaveAllTrades, -1)
@@ -130,14 +130,14 @@ function main()
 		full_date = os.date('*t')
 		string_date = string.format('%02d/%02d/%04d', full_date.day, full_date.month, full_date.year)
 		string_time = string.format('%02d:%02d:%02d', full_date.hour, full_date.min, full_date.sec)
-		SetWindowCaption(SaveAllTrades, "сохранение данных ..."..' '..string_time..'   '..string_date)
+		SetWindowCaption(SaveAllTrades, "СЃРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… ..."..' '..string_time..'   '..string_date)
 		if (isConnected() and full_date.hour >= 18) and os.difftime(os.time(), t1) > 800 then
 			t1 = os.time()
 			SetColor(SaveAllTrades, QTABLE_NO_INDEX, 2, RGB(255, 211, 0), QTABLE_DEFAULT_COLOR, RGB(255, 211, 0), QTABLE_DEFAULT_COLOR)
 			_AllTrade_Write(sPath, tickers, full_date)
 			SetColor(SaveAllTrades, QTABLE_NO_INDEX, 2, QTABLE_DEFAULT_COLOR, QTABLE_DEFAULT_COLOR, QTABLE_DEFAULT_COLOR, QTABLE_DEFAULT_COLOR)
 		else
-			SetWindowCaption(SaveAllTrades, "сохранение данных ..."..' '..string_time..'   '..string_date)
+			SetWindowCaption(SaveAllTrades, "СЃРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… ..."..' '..string_time..'   '..string_date)
 		end
 		sleep(100)
 	end

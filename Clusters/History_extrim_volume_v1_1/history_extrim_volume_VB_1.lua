@@ -1,4 +1,4 @@
-package.cpath=".\\?.dll;.\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\loadall.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\loadall.dll;C:\\Program Files\\Lua\\5.1\\?.dll;C:\\Program Files\\Lua\\5.1\\?51.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files\\Lua\\5.1\\loadall.dll;C:\\Program Files\\Lua\\5.1\\clibs\\loadall.dll"..package.cpath
+п»їpackage.cpath=".\\?.dll;.\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files (x86)\\Lua\\5.1\\loadall.dll;C:\\Program Files (x86)\\Lua\\5.1\\clibs\\loadall.dll;C:\\Program Files\\Lua\\5.1\\?.dll;C:\\Program Files\\Lua\\5.1\\?51.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?.dll;C:\\Program Files\\Lua\\5.1\\clibs\\?51.dll;C:\\Program Files\\Lua\\5.1\\loadall.dll;C:\\Program Files\\Lua\\5.1\\clibs\\loadall.dll"..package.cpath
 package.path=package.path..";.\\?.lua;C:\\Program Files (x86)\\Lua\\5.1\\lua\\?.lua;C:\\Program Files (x86)\\Lua\\5.1\\lua\\?\\init.lua;C:\\Program Files (x86)\\Lua\\5.1\\?.lua;C:\\Program Files (x86)\\Lua\\5.1\\?\\init.lua;C:\\Program Files (x86)\\Lua\\5.1\\lua\\?.luac;C:\\Program Files\\Lua\\5.1\\lua\\?.lua;C:\\Program Files\\Lua\\5.1\\lua\\?\\init.lua;C:\\Program Files\\Lua\\5.1\\?.lua;C:\\Program Files\\Lua\\5.1\\?\\init.lua;C:\\Program Files\\Lua\\5.1\\lua\\?.luac;"
 
 package.path=package.path..getScriptPath()..'\\?.lua;'
@@ -8,11 +8,11 @@ require 'date'
 require 'extrim_volume_1'
 require 'show_history_volume_1'
 
---Структура с параметрами кластера.
---Описана в файле config.xml
+--РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РєР»Р°СЃС‚РµСЂР°.
+--РћРїРёСЃР°РЅР° РІ С„Р°Р№Р»Рµ config.xml
 
 --##############################################
--- Ввести название инструмента.
+-- Р’РІРµСЃС‚Рё РЅР°Р·РІР°РЅРёРµ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°.
 local ticker = 'VBZ7'	
 --##############################################
 
@@ -22,11 +22,11 @@ local is_run = true
 
 function OnInit(path)
 	LookedFiles = AllocTable()
-	AddColumn(LookedFiles, 1, "Просмотренный файл", true, QTABLE_STRING_TYPE, 60)
-	AddColumn(LookedFiles, 2, "Найден", true, QTABLE_STRING_TYPE, 10)
+	AddColumn(LookedFiles, 1, "РџСЂРѕСЃРјРѕС‚СЂРµРЅРЅС‹Р№ С„Р°Р№Р»", true, QTABLE_STRING_TYPE, 60)
+	AddColumn(LookedFiles, 2, "РќР°Р№РґРµРЅ", true, QTABLE_STRING_TYPE, 10)
 	
 	CreateWindow(LookedFiles)
-	SetWindowCaption(LookedFiles, "Список прросмотренных файлов.")
+	SetWindowCaption(LookedFiles, "РЎРїРёСЃРѕРє РїСЂСЂРѕСЃРјРѕС‚СЂРµРЅРЅС‹С… С„Р°Р№Р»РѕРІ.")
 	InsertRow(LookedFiles, -1)
 end
 
@@ -40,7 +40,7 @@ end
 
 function main() 	
 	
-    local start_all_trade = 0      --Стартовая запись в таблице 'all_trades'
+    local start_all_trade = 0      --РЎС‚Р°СЂС‚РѕРІР°СЏ Р·Р°РїРёСЃСЊ РІ С‚Р°Р±Р»РёС†Рµ 'all_trades'
     local start_date = date(store.NOW_DATE):adddays(-store.ticker_store['DAYS_BEFORE'])    
 
     for i=1, store.ticker_store['DAYS_BEFORE'] do
@@ -57,6 +57,6 @@ function main()
 		showListOfFiles(store, LookedFiles, i)
         start_date = start_date:adddays(1)
     end 
-    message('Работа над '..store.ticker_store['SecCode']..' закончена!', 1) 
+    message('Р Р°Р±РѕС‚Р° РЅР°Рґ '..store.ticker_store['SecCode']..' Р·Р°РєРѕРЅС‡РµРЅР°!', 1) 
 
 end
